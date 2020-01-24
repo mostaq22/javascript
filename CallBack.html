@@ -5,16 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+    <br>
+    <div class="container">
+          <div id="target-id" class="alert alert-warning"></div>
+        <table class="table table-bordered">
+        <thead>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Age</th>
+        </thead>
+        <tbody id="data"></tbody>        
+    </table>
+    <div class="alert alert-success" id="total-count"></div>
+    </div>
+    
+
     <script>
-    const teamList = [
+    var teamList = [
         {name: 'mostaq', type: 'Dev',age: 32},
         {name: 'tazal', type: 'prog',age: 20},
         {name: 'nazrul', type: 'dev',age: 19},
         {name: 'haider', type: 'graph',age: 22},
         {name: 'farzana', type: 'dev',age: 30},
     ];
+
+    document.getElementById('target-id').innerHTML = JSON.stringify(teamList);
 
     let manageTeam = function (data, callback){
         // console.log(data.length);
@@ -30,6 +49,10 @@
 
 manageTeam(teamList, function(obj){
     if (obj.age > 29) {
+        // var node = ;
+
+        var d1 = document.getElementById("data");
+        d1.insertAdjacentHTML('afterend', `<tr><td>${obj.name}</td><td>${obj.type}</td><td>${obj.age}</td></tr>`);
         console.log(obj.name + "  is here.");
     }
 });
@@ -43,6 +66,9 @@ let detemineTotal = function(){
     });
 
     console.log("Total Age: "+ totalAge + " and count is "+ count);
+    document.getElementById("total-count").innerHTML = `Total Age ${totalAge} and Count is ${count}`;
+    // d1.insertAdjacentHTML('afterend', `<tr><td>${obj.name}</td><td>${obj.type}</td><td>${obj.age}</td></tr>`);
+
 }
 
 detemineTotal();
