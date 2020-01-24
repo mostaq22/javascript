@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const teamList = [
+        {name: 'mostaq', type: 'Dev',age: 32},
+        {name: 'tazal', type: 'prog',age: 20},
+        {name: 'nazrul', type: 'dev',age: 19},
+        {name: 'haider', type: 'graph',age: 22},
+        {name: 'farzana', type: 'dev',age: 30},
+    ];
+
+    let manageTeam = function (data, callback){
+        // console.log(data.length);
+        for(let i=0; i < data.length; i++){
+            // console.log(data[i])
+            if(data[i].type.toLowerCase() == 'dev'){
+                if(typeof callback === 'function'){
+                    callback(data[i]);
+                } // end if callback 
+            } // end if type
+        } // end for
+    } //end function
+
+manageTeam(teamList, function(obj){
+    if (obj.age > 29) {
+        console.log(obj.name + "  is here.");
+    }
+});
+
+let detemineTotal = function(){
+    let totalAge = 0;
+    let count = 0;
+    manageTeam(teamList, function(obj){
+        totalAge = totalAge + obj.age
+        count++;
+    });
+
+    console.log("Total Age: "+ totalAge + " and count is "+ count);
+}
+
+detemineTotal();
+
+    </script>
+</body>
+</html>
